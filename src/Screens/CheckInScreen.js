@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Alert
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import MainHeader from "../Components/MainHeader";
@@ -42,7 +43,12 @@ const CheckInScreen = ({ navigation }) => {
       if (response.status === "success") {
         console.log(response);
 
-        setLoading(false);
+        Alert.alert(
+          'Successfully Logged the user ',
+          "the user can now enter the store",
+          [{ text: 'OK', onPress: () => null }],
+          { cancelable: true },
+        )
         // check if user is at the right route 
 
 

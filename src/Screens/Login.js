@@ -80,7 +80,7 @@ const Login = ({ navigation }) => {
       <View style={styles.LoginPage}>
         <Text style={styles.HellowText}>Hello Again!</Text>
         <Text style={styles.SignIn}>Please Sign in to your Account</Text>
-        <AppInput name={"Email Address"} placeholder={"Email"} onChangeText={setUsername} />
+        <AppInput name={"Email"} placeholder={"Email"} onChangeText={setUsername} />
         <Appinputpassword
           name={"Password"}
           placeholder={"Password"}

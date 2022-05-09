@@ -46,7 +46,7 @@ const Dashboard = ({ navigation }) => {
         {/* left */}
         <View style={styles.LeftMainTopContaienr}>
           <Text style={styles.HeaderText}>Hello {user.username}👋</Text>
-          <Text style={styles.SubHeaderText}>{user.isRestaurant ? "Restaurant" : "Normal User"}</Text>
+          <Text style={styles.SubHeaderText}>{user.isRestaurant ? "Business Account" : "Normal User"}</Text>
         </View>
         <View style={styles.RightMainTopContaienr}>
           <Text style={styles.SubText3}>Your location</Text>

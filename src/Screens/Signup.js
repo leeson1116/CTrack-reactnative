@@ -37,37 +37,48 @@ const Signup = ({ navigation }) => {
   async function onSubmit() {
     setLoading(true);
     try {
-      var stateSubmit
-      isR ?
-        stateSubmit = {
-          "username": username,
-          "email": email,
-          "password": password,
-          "passwordConfirm": passwordC,
-          "isRestaurant": isR,
-          "VAT": VAT
-        } :
-        stateSubmit = {
-          "username": username,
-          "email": email,
-          "password": password,
-          "passwordConfirm": passwordC,
-          "isRestaurant": isR,
+
+      if (isR == true && VAT == '') {
+        setError("Please make sure VAT is provided to register as business account")
+      } else {
+
+        var stateSubmit
+        isR ?
+          stateSubmit = {
+            "username": username,
+            "email": email,
+            "password": password,
+            "passwordConfirm": passwordC,
+            "isRestaurant": isR,
+            "VAT": VAT
+          } :
+          stateSubmit = {
+            "username": username,
+            "email": email,
+            "password": password,
+            "passwordConfirm": passwordC,
+            "isRestaurant": isR,
+          }
+        // check if isR is true if true check if VAT exist
+
+        console.log(stateSubmit)
+
+
+        let response = await api.register(stateSubmit);
+        setLoading(false);
+        // console.log(response)
+        if (response.status == "success") {
+          Alert.alert(
+            'Registration Successful',
+            response.message,
+            [{ text: 'OK', onPress: () => navigation.replace("Login") }],
+            { cancelable: false },
+          );
+          navigation.navigate("Login");
+        } else {
+          setError(response.message)
         }
 
-      let response = await api.register(stateSubmit);
-      setLoading(false);
-      // console.log(response)
-      if (response.status == "success") {
-        Alert.alert(
-          'Registration Successful',
-          response.message,
-          [{ text: 'OK', onPress: () => navigation.replace("Login") }],
-          { cancelable: false },
-        );
-        navigation.navigate("Login");
-      } else {
-        setError(response.message)
       }
 
     } catch (error) {

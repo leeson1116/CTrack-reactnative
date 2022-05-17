@@ -32,8 +32,8 @@ const CheckInScreen = ({ navigation }) => {
   const handleBarCodeScanned = async ({ type, data }) => {
 
     console.log(data);
-    setscanned(true);
-    setallowScan(false);
+    setscanned(true)
+    setallowScan(false)
     setMessage("Successfully checked in the user")
     try {
 
@@ -49,8 +49,8 @@ const CheckInScreen = ({ navigation }) => {
           [{ text: 'OK', onPress: () => null }],
           { cancelable: true },
         )
-        // check if user is at the right route 
-
+        // check if user is at the right route  need to change it so that 
+        // it can rescanned 
 
 
       } else {
@@ -101,7 +101,10 @@ const CheckInScreen = ({ navigation }) => {
           </View>
           <TouchableOpacity
             style={styles.scanBtn}
-            onPress={() => setallowScan(!allowScan)}
+            onPress={() => {
+              setallowScan(!allowScan)
+              setscanned(false)
+            }}
           >
             <Ionicons name="qr-code-outline" color={"white"} size={h("4%")} />
           </TouchableOpacity>

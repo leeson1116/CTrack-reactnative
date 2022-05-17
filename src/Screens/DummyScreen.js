@@ -36,6 +36,7 @@ const DummyScreen = ({ navigation }) => {
         if (mounted) {
           setList(response.result);
         }
+        setToChange(null)
 
 
       } catch (error) {

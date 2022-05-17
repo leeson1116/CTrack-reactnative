@@ -156,7 +156,12 @@ const Verifcation = ({ navigation }) => {
                     Alert.alert(
                       'Are you sure to change your status to ' + dat + '?',
                       "this will effect your logs record",
-                      [{ text: 'OK', onPress: () => setselected(dat) }, { text: "cancel", onPress: () => null }],
+                      [{
+                        text: 'OK', onPress: () => {
+                          // setselected(dat)
+                          handleSubmit(dat)
+                        }
+                      }, { text: "cancel", onPress: () => null }],
                       { cancelable: true },
                     )
                   ) : (
